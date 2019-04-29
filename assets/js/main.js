@@ -1,9 +1,7 @@
-
-
 "use strict";
 
-var button = document.querySelector(".load_users");
-var loadingGif = document.querySelector(".loading_gif");
+let button = document.querySelector(".load_users");
+let loadingGif = document.querySelector(".loading_gif");
 
 console.log(button);
 button.addEventListener("click", buttonClicked.bind(null, loadingGifShow, loadingGifHide));
@@ -21,4 +19,18 @@ function loadingGifShow () {
 function loadingGifHide () {
     loadingGif.classList.add("hide");
 }
+
+function request() {
+    let url = "https://jsonplaceholder.typicode.com/users";
+
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("GET", url);
+    xhr.onload = (event) => {
+        console.log(JSON.parse(event.target.response));
+        ;
+    }
+    xhr.send(null);
+}
+request();
 
